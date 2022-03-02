@@ -47,9 +47,101 @@
     <button onclick="guess()">Guess</button>
     <!-- </span> -->
     <button onclick="alert(word)">Show answer</button>
+    <button onclick="hint()">Hint (Show one char)</button>
     <script>
+        function hint()
+        {
+            
+            if(Math.random>0.5)
+            {
+                for(var i=0; i <done.length; i++)
+                {
+      
+                    
+                    if(done[i]==0)
+                    {
+                          if(Number(word[i]) or word[i]=='0')
+                           {
+                             thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
+                            }
+                           else{
+                             thishtml = document.getElementById("i").value[i]
+                           }
+                           document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gold'>" + thishtml + "</div>"
+                    else
+                    {
+                          if(Number(document.getElementById("i").value[i]) or document.getElementById("i").value[i]=='0')
+                           {
+                           thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
+                           }
+                            else{
+                                thishtml = document.getElementById("i").value[i]
+                            }
+                        if (word[i] == document.getElementById("i").value[i]) {
+                    done[i]=1
+                    document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
+                }
+                else {
+                    if (word.indexOf(document.getElementById("i").value[i]) != -1) {
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + thishtml + "</div>"
+                    }
+                    else {
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + thishtml + "</div>"
+                        // document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + word[i] + "</div>"
+
+                    }
+                }
+                    }
+                        
+                        
+            }
+            else{
+                for(var i=done.length-1; i >=0 ;i--)
+                {
+      
+                    
+                    if(done[i]==0)
+                    {
+                          if(Number(word[i]) or word[i]=='0')
+                           {
+                             thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
+                            }
+                           else{
+                             thishtml = document.getElementById("i").value[i]
+                           }
+                           document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gold'>" + thishtml + "</div>"
+                    else
+                    {
+                          if(Number(document.getElementById("i").value[i]) or document.getElementById("i").value[i]=='0')
+                           {
+                           thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
+                           }
+                            else{
+                                thishtml = document.getElementById("i").value[i]
+                            }
+                        if (word[i] == document.getElementById("i").value[i]) {
+                    done[i]=1
+                    document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
+                }
+                else {
+                    if (word.indexOf(document.getElementById("i").value[i]) != -1) {
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + thishtml + "</div>"
+                    }
+                    else {
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + thishtml + "</div>"
+                        // document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + word[i] + "</div>"
+
+                    }
+                }
+                    }
+                        
+                 
+            }
+        }
+        
         word = "?"
         Glist = []
+        done = []
         fetch('list.json')
             .then(response => response.json())
             .then(function (list) {
@@ -57,6 +149,9 @@
                 console.log(list)
                 Glist = list
                 word = list[parseInt(Math.random() * list.length)]
+                for(var _=0;_<word.length;_++){
+                    done.push(0)
+                }
                 // console.log(word)
                 document.getElementById("block_set").innerHTML = "<div class='block'></div>".repeat(word.length)
             });
@@ -75,7 +170,7 @@
             document.getElementById("block_set").innerHTML += "<br/>"
             for (var i = 0; i < word.length; i++) {
                 thishtml = ""
-                if(Number(document.getElementById("i").value[i]))
+                if(Number(document.getElementById("i").value[i]) or document.getElementById("i").value[i]=='0')
                    {
                    thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
                    }
@@ -83,6 +178,7 @@
                     thishtml = document.getElementById("i").value[i]
                 }
                 if (word[i] == document.getElementById("i").value[i]) {
+                    done[i]=1
                     document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
                 }
                 else {
