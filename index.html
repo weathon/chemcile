@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemcile</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+
+<body>
+    <style>
+        .block {
+            width: 80px;
+            height: 80px;
+            border: 2px;
+            border-color: grey;
+            border-style: solid;
+            /* background-color: green; */
+            /* display:inline; */
+            display: inline-block;
+        }
+    </style>
+    <h1>Chemcile</h1>
+    <p>I have not made a cool UI yet and we don't have many forumal in the dataset, you can help me if you want!!! https://github.com/weathon/chemcile</p>
+    <p> notice that the length will change and the word each time will be different</p>
+    <!-- <div class="block">a</div> -->
+    <!-- <span >  -->
+        <!-- di=yahcixkouxueyaxkoutthanghuangkoukexkou -->
+        <div id="block_set"></div>
+        <input id="i"></input>
+        <button onclick="guess()">Guess</button>
+    <!-- </span> -->
+<script>
+    word = "?"
+    Glist = []
+    fetch('list.json')
+  .then(response => response.json())
+  .then(function(list)
+  {
+    // words = list.split('\n');
+    console.log(list)
+    Glist = list
+    word = list[parseInt(Math.random()*list.length)]
+    // console.log(word)
+    document.getElementById("block_set").innerHTML = "<div class='block'></div>".repeat(word.length)
+  });
+function guess()
+{
+    if(document.getElementById("i").value.length != word.length)
+    {
+        alert("Wrong length!")
+        return
+    }
+    // if(!(document.getElementById("i").value in Glist)) //()
+    document.getElementById("block_set").innerHTML = "<div class='block'></div>".repeat(word.length)
+    if()
+    {
+        alert("Not in the list")
+        return
+    }
+    document.getElementById("block_set").innerHTML += "<br/>"
+    for(var i=0;i<word.length;i++)
+    {
+        if(word[i] == document.getElementById("i").value[i])
+        {
+    document.getElementById("block_set").innerHTML = "<div class='block' style='background-color:green'></div>"
+            
+        }
+    }
+
+}
+    </script>
+</body>
+
+</html>
