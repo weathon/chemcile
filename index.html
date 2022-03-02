@@ -86,7 +86,7 @@
                     document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
                 }
                 else {
-                    if (word.search(document.getElementById("i").value[i]) != -1) {
+                    if (word.indexOf(document.getElementById("i").value[i]) != -1) {
                         document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + thishtml + "</div>"
                     }
                     else {
