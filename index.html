@@ -79,10 +79,9 @@
                                 thishtml = document.getElementById("i").value[i]
                             }
                         if (word[i] == document.getElementById("i").value[i]) {
-                    done[i]=1
-                    document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
-                        
-                }
+                            done[i]=1
+                            document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
+                        }
                 else {
                     if (word.indexOf(document.getElementById("i").value[i]) != -1) {
                         document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + thishtml + "</div>"
@@ -99,7 +98,7 @@
             }
        
         }
-        
+        }
         word = "?"
         Glist = []
         done = []
