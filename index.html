@@ -62,9 +62,9 @@
             document.getElementById("block_set").innerHTML += "<br/>"
             for (var i = 0; i < word.length; i++) {
                 thishtml = ""
-                if(Number(document.getElementById("i").value[i]) != NaN)
+                if(Number(document.getElementById("i").value[i]))
                    {
-                   thishtml = "<span style='font-size:20px'>"+document.getElementById("i").value[i]+"</span>"
+                   thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
                    }
                 else{
                     thishtml = document.getElementById("i").value[i]
