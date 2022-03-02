@@ -37,7 +37,7 @@
         https://github.com/weathon/chemcile</p>
     <p> notice that the length will change and the word each time will be different</p>
     <p>Part of the list is from https://byjus.com/chemical-compound-formulas/</p>
-    <p>How to play: enter a forumal in the text box and press guess. The grey box means there is no this char in the answer. Yellow means there is but it is in the wrong location; and green means it is in the right location.</p>
+    <p>How to play: enter a forumal in the text box and press guess. The grey box means there is no this char in the answer. Yellow means there is but it is in the wrong location; and green means it is in the right location. Pink box is from hint.</p>
     <!-- yanjingsuanlaoshi sikaokunwanyanjingyangkeosu -->
     <!-- <div class="block">a</div> -->
     <!-- <span >  -->
@@ -51,27 +51,40 @@
     <script>
         function hint()
         {
-            
-            if(Math.random>0.5)
+                        if (document.getElementById("i").value.length != word.length) {
+                alert("Wrong length!")
+                return
+            }
+            // if(!(document.getElementById("i").value in Glist)) //()
+            if (!Glist.includes(document.getElementById("i").value)) //shouzang jianpanbaocuohuangyouianbushanglelongxkousuanyunkun  100 cpu suan hlong ram bugoule taiduole xkouduzi huangxkou 
+            // if(!Glist.includes(word)) //shouzang jianpanbaocuohuangyouianbushanglelongxkousuanyunkun  100 cpu suan hlong ram bugoule taiduole xkouduzi huangxkou 
             {
+                alert("Not in the list")
+                return
+            }
+            if(Math.random()>0)
+            {
+                thisTimeDone = false;
+                document.getElementById("block_set").innerHTML += "<br/>"
                 for(var i=0; i <done.length; i++)
                 {
-      
-                    
-                    if(done[i]==0)
+                    if(done[i]==0 && !thisTimeDone)
                     {
-                          if(Number(word[i]) or word[i]=='0')
+                          if(Number(word[i]) || word[i]=='0')
                            {
-                             thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
+                             thishtml = "<span style='font-size:30px'>"+word[i]+"</span>"
                             }
                            else{
-                             thishtml = document.getElementById("i").value[i]
+                             thishtml = word[i]
                            }
-                           document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gold'>" + thishtml + "</div>"
+                           document.getElementById("block_set").innerHTML += "<div class='block' style='border-color:gold;background-color:lightpink'>" + thishtml + "</div>"
+                        done[i] = 1;
+                        thisTimeDone = true;
+                        
                     }
                     else
                     {
-                          if(Number(document.getElementById("i").value[i]) or document.getElementById("i").value[i]=='0')
+                          if(Number(document.getElementById("i").value[i]) || document.getElementById("i").value[i]=='0')
                            {
                            thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
                            }
@@ -102,7 +115,7 @@
         word = "?"
         Glist = []
         done = []
-        fetch('list.json')
+        fetch('https://www.weathon.top/chemcile/list.json')
             .then(response => response.json())
             .then(function (list) {
                 // words = list.split('\n');
@@ -130,7 +143,7 @@
             document.getElementById("block_set").innerHTML += "<br/>"
             for (var i = 0; i < word.length; i++) {
                 thishtml = ""
-                if(Number(document.getElementById("i").value[i]) or document.getElementById("i").value[i]=='0')
+                if(Number(document.getElementById("i").value[i]) || document.getElementById("i").value[i]=='0')
                    {
                    thishtml = "<span style='font-size:30px'>"+document.getElementById("i").value[i]+"</span>"
                    }
