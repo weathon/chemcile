@@ -61,15 +61,23 @@
             }
             document.getElementById("block_set").innerHTML += "<br/>"
             for (var i = 0; i < word.length; i++) {
+                thishtml = ""
+                if(Number(document.getElementById("i").value[i]) != NaN)
+                   {
+                   thishtml = "<span style='font-size:20px'>"+document.getElementById("i").value[i]+"</span>"
+                   }
+                else{
+                    thishtml = document.getElementById("i").value[i]
+                }
                 if (word[i] == document.getElementById("i").value[i]) {
-                    document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + word[i] + "</div>"
+                    document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightgreen'>" + thishtml + "</div>"
                 }
                 else {
                     if (word[i].search(document.getElementById("i").value[i]) != -1) {
-                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + document.getElementById("i").value[i] + "</div>"
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:lightyellow'>" + thishtml + "</div>"
                     }
                     else {
-                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + document.getElementById("i").value[i] + "</div>"
+                        document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + thishtml + "</div>"
                         // document.getElementById("block_set").innerHTML += "<div class='block' style='background-color:gray'>" + word[i] + "</div>"
 
                     }
